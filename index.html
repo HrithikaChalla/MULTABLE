@@ -3,31 +3,37 @@
 <head>
     <title>Multiplication Table</title>
 </head>
-
 <body>
 
-<h2>Multiplication Table</h2>
+    <h2>Multiplication Table</h2>
 
-<button onclick="showTable()">Generate Table</button>
+    Enter a number:
+    <input type="text" id="num">
+    <button onclick="generateTable()">Generate Table</button>
 
-<script>
-    function showTable() {
-        var n = prompt("Enter a number");
+    <p id="result"></p>
 
-        if (n == null || n == "" || isNaN(n)) {
-            alert("Please enter a valid number");
-            return;
+    <script>
+        function generateTable() {
+            var n = document.getElementById("num").value;
+            var output = "";
+
+            if (n == "") {
+                alert("Please enter a number");
+                return;
+            }
+
+            alert("Generating multiplication table for " + n);
+
+            output += "<b>Multiplication Table for " + n + ":</b><br>";
+
+            for (var i = 1; i <= 10; i++) {
+                output += n + " x " + i + " = " + (n * i) + "<br>";
+            }
+
+            document.getElementById("result").innerHTML = output;
         }
-
-        var table = "Multiplication Table for " + n + ":\n\n";
-
-        for (var i = 1; i <= 10; i++) {
-            table = table + n + " x " + i + " = " + (n * i) + "\n";
-        }
-
-        alert(table);
-    }
-</script>
+    </script>
 
 </body>
 </html>
